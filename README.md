@@ -26,6 +26,20 @@ Right there, you will find the *requirements.txt* file that has all the great de
 ```
 Django>=1.9
 djangorestframework>=3.3.1
-django-rest-authemail
-django-debug-toolbar>=1.3.2
 ```
+
+### 5. REST API methods
+
+Create user: POST to '/user/register/'
+```
+{
+	"email": "test@example.com",
+	"password": "qwerty"
+}
+```
+
+Get user token: POST to '/user/api-token-auth/'
+```
+email=test@example.com&password=qwerty
+```
+
