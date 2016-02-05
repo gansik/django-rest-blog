@@ -1,6 +1,6 @@
 # django-rest-blog
 
-django-rest-blog is a test application for demonstrate knowledge in the [Django framework](https://www.djangoproject.com/).
+django-rest-blog is a test application for demonstrate knowledge in the [Django framework](https://www.djangoproject.com/) and [Django REST framework](http://www.django-rest-framework.org/).
 
 ## Installation
 
@@ -20,6 +20,9 @@ Right there, you will find the *requirements.txt* file that has all the great de
 
 `$ pip install -r requirements.txt`
 
+
+
+### 4. Source of requirements.txt
 ```
 Django>=1.9
 djangorestframework>=3.3.1
