@@ -42,13 +42,18 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     'accounts',
+    'posts',
 ]
 
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-    )
+        'accounts.authentication.TokenAuthSupportQueryString', 	# just for testing http://stackoverflow.com/questions/29433416/token-in-query-string-with-django-rest-frameworks-tokenauthentication
+        #'rest_framework.authentication.TokenAuthentication',
+    ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
 }
 
 AUTH_USER_MODEL = 'accounts.RestEmailUser'

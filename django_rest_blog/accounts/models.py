@@ -31,10 +31,16 @@ class RestEmailUserManager(BaseUserManager):
         return user
 
 class RestEmailUser(AbstractBaseUser):
+
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
         unique=True,
+    )
+
+    name = models.CharField(
+        verbose_name='name',
+        max_length=255,
     )
 
     is_active = models.BooleanField(default=True)
@@ -43,7 +49,7 @@ class RestEmailUser(AbstractBaseUser):
     objects = RestEmailUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['name',]
 
     @property
     def is_staff(self):

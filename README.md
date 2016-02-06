@@ -28,18 +28,20 @@ Django>=1.9
 djangorestframework>=3.3.1
 ```
 
-### 5. REST API methods
+### 5. API methods
 
-Create user: POST to '/user/register/'
-```
-{
-	"email": "test@example.com",
-	"password": "qwerty"
-}
-```
+QueryString
+http://127.0.0.1:8001/api/user/profile/?auth_token=e9f63d33591014f3915af5b36c2148f1d6cfdf3c
 
-Get user token: POST to '/user/api-token-auth/'
-```
-email=test@example.com&password=qwerty
-```
+	`/api/user/register/` - Create User
+	`/api/user/api-token-auth/` - Get Auth Token
+	`/api/user/profile/` - User Profile (need token)
+	`/api/post/` - List of posts (need token, by page view)
+	`/api/post/my/` - List of user posts (need token, by page view)
 
+
+For any method with token, it can be passed in querystring like:
+
+`/api/user/profile/?auth_token=e9f63d33591014f3915af5b36c2148f1d6cfdf3c`
+
+For create new post, send POST request to `/api/post/` (of course, with token)
