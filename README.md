@@ -30,15 +30,11 @@ djangorestframework>=3.3.1
 
 ### 5. API methods
 
-QueryString
-http://127.0.0.1:8001/api/user/profile/?auth_token=e9f63d33591014f3915af5b36c2148f1d6cfdf3c
-
 	`/api/user/register/` - Create User
 	`/api/user/api-token-auth/` - Get Auth Token
 	`/api/user/profile/` - User Profile (need token)
 	`/api/post/` - List of posts (need token, by page view)
 	`/api/post/my/` - List of user posts (need token, by page view)
-
 
 For any method with token, it can be passed in querystring like:
 
