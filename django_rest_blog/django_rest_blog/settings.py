@@ -57,6 +57,7 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'accounts.RestEmailUser'
+LOGIN_URL = '/api/user/api-token-auth/'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',

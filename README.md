@@ -20,8 +20,6 @@ Right there, you will find the *requirements.txt* file that has all the great de
 
 `$ pip install -r requirements.txt`
 
-
-
 ### 4. Source of requirements.txt
 ```
 Django>=1.9
@@ -33,7 +31,9 @@ djangorestframework>=3.3.1
 	`/api/user/register/` - Create User
 	`/api/user/api-token-auth/` - Get Auth Token
 	`/api/user/profile/` - User Profile (need token)
-	`/api/post/` - List of posts (need token, by page view)
+	`/api/post/` - List of posts (by page view)
+	`/api/post/` - Create new post (if sending POST request)
+	`/api/post/<PK>/` - Get details of a post
 	`/api/post/my/` - List of user posts (need token, by page view)
 
 For any method with token, it can be passed in querystring like:
@@ -41,3 +41,9 @@ For any method with token, it can be passed in querystring like:
 `/api/user/profile/?auth_token=e9f63d33591014f3915af5b36c2148f1d6cfdf3c`
 
 For create new post, send POST request to `/api/post/` (of course, with token)
+
+### 6. Run tests
+`./manage.py test`
+
+### 7. Go!
+`./manage.py runserver`

@@ -1,8 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.template.defaultfilters import slugify
+#from django.utils.decorators import method_decorator
 
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import list_route
 from rest_framework.response import Response
+from rest_framework.exceptions import PermissionDenied
+from rest_framework import filters
 
 from .serializers import PostSerializer
 from .models import Post
@@ -25,15 +29,16 @@ class PostsViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
 
-    """
-    @detail_route(renderer_classes=[renderers.StaticHTMLRenderer])
-    def highlight(self, request, *args, **kwargs):
-        snippet = self.get_object()
-        return Response(snippet.highlighted)
-    """
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('title', )
+    search_fields = ('title', 'bodytext')
 
+    #@method_decorator(login_required)
     @list_route()
     def my(self, request):
+        if not request.user.is_authenticated():
+             raise PermissionDenied()
+
         posts = Post.objects.filter(owner=request.user)
 
         page = self.paginate_queryset(posts)
